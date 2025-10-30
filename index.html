@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style.css">
+    <title>Regra do 72</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="calculo.html">Cálculo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2>Com a regra do 72 é possível descobrir em quanto tempo o seu dinheiro irá dobrar.</h2><br>
+
+        <div class="content-section">
+            <h3>O que é a regra do 72?</h3>
+            <p>A Regra do 72 é uma fórmula rápida usada para estimar em quanto tempo um investimento vai dobrar de valor.
+            Basta dividir o número 72 pela taxa de juros anual. O resultado mostra, de forma aproximada, 
+            quantos anos serão necessários para o dinheiro se multiplicar por dois.</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Como usar a Regra do 72 na prática:</h3>
+            <p>Para usar a Regra do 72, basta seguir três passos simples:</p>
+            <ol>
+                <li>Determine a taxa de juros anual do seu investimento.</li>
+                <li>Divida 72 pela taxa de juros.</li>
+                <li>O resultado será o tempo aproximado em anos para o dinheiro dobrar.</li>
+            </ol>
+            <div class="example-box">
+                <strong>Exemplo:</strong> Com uma taxa de juros de 8%, 72 ÷ 8 = 9 anos.
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>Por que a Regra do 72 é útil?</h3>
+            <p>Ela ajuda investidores a ter uma noção rápida do crescimento de seu dinheiro sem precisar de cálculos complexos ou planilhas avançadas. 
+            Ideal para planejar investimentos de longo prazo.</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Limitações da Regra do 72:</h3>
+            <p>Embora seja prática, a regra é apenas uma aproximação. Ela não considera:</p> 
+            <ul> 
+                <li>Inflação</li> 
+                <li>Tributos sobre rendimentos</li> 
+                <li>Contribuições adicionais ou retiradas durante o período</li> 
+            </ul> 
+            <p>Para cenários mais complexos, é recomendado usar calculadoras financeiras ou planilhas específicas.</p>
+        </div>
+
+    <div class="button-container">
+        <h4>Calcule em quanto tempo seu investimento dobra:</h4>
+        <button id="btnCalculo">Ir para o cálculo</button>
+    </div>
+    <script>
+    document.getElementById('btnCalculo').onclick = function() {
+        window.location.href = 'calculo.html';
+    };
+    </script>
+
+    <footer class="footer">
+        <p>&copy; Todos os direitos reservados Isabelly da C. Almeida 2025.</p>
+    </footer>
+</body>
+</html>

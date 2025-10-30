@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Calculadora sobre a Regra do 72:</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="calculo.html">Cálculo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2 class="calculator-title">Calcule em quanto tempo seu investimento dobrará:</h2>
+
+        <form id="regra72-form" onsubmit="return false;">
+            <div class="form-group">
+                <label for="taxa">Taxa de juros anual (%)</label>
+                <input type="number" id="taxa" step="0.01" min="0.01" required placeholder="Digite a taxa de juros">
+            </div>
+            <div class="botoes">
+                <button type="button" onclick="calcularRegra72()">Calcular</button>
+                <button type="button" onclick="limparCalculo()">Limpar</button>
+            </div>
+        </form>
+        <p id="resultado"></p>
+
+    <script>
+    // filepath: c:\Users\ALUNO\Desktop\calc72\index.html
+    function calcularRegra72() {        
+        const taxaInput = document.getElementById('taxa');
+        const resultadoElem = document.getElementById('resultado');
+        const taxa = parseFloat(taxaInput.value);
+        
+        if (!taxa || taxa <= 0) {
+            resultadoElem.textContent = ' Por favor, insira uma taxa válida.';
+            taxaInput.focus();
+            resultadoElem.style.color = '#d32f2f';
+            return;
+        }
+
+        const totalAnos = 72 / taxa;
+        const anos = Math.floor(totalAnos);
+        const meses = Math.round((totalAnos - anos) * 12);
+        
+        let resultado = ` Com uma taxa de ${taxa.toFixed(2)}% ao ano, o investimento dobra em `;
+        if (anos > 0) {
+            resultado += `${anos} ano${anos !== 1 ? 's' : ''}`;
+            if (meses > 0) {
+                resultado += ` e `;
+            }
+        }
+        if (meses > 0) {
+            resultado += `${meses} ${meses === 1 ? 'mês' : 'meses'}`;
+        }
+        resultado += '! ';
+        
+        // Efeito de fade no resultado
+        resultadoElem.style.opacity = '0';
+        resultadoElem.style.color = '#677e51';
+        
+        setTimeout(() => {
+            resultadoElem.textContent = resultado;
+            resultadoElem.style.opacity = '1';
+        }, 200);
+
+        // Destaca a linha da tabela mais próxima do resultado
+        destacarLinhaTabela(taxa);
+    }
+
+    function destacarLinhaTabela(taxaAtual) {
+        const linhas = document.querySelectorAll('table tr');
+        let menorDiferenca = Infinity;
+        let linhaMaisProxima = null;
+
+        // Remove highlight anterior
+        linhas.forEach(linha => linha.classList.remove('highlight'));
+
+        // Procura a linha com a taxa mais próxima
+        linhas.forEach(linha => {
+            const taxaCelula = linha.cells?.[0]?.textContent;
+            if (taxaCelula) {
+                const taxa = parseFloat(taxaCelula);
+                if (!isNaN(taxa)) {
+                    const diferenca = Math.abs(taxa - taxaAtual);
+                    if (diferenca < menorDiferenca) {
+                        menorDiferenca = diferenca;
+                        linhaMaisProxima = linha;
+                    }
+                }
+            }
+        });
+
+        // Aplica o highlight na linha mais próxima
+        if (linhaMaisProxima) {
+            linhaMaisProxima.classList.add('highlight');
+        }
+    }
+
+    function limparCalculo() {
+        const taxaInput = document.getElementById('taxa');
+        const resultadoElem = document.getElementById('resultado');
+        
+        taxaInput.value = '';
+        resultadoElem.textContent = '';
+        taxaInput.focus();
+    }
+
+    // Adiciona evento de tecla Enter
+    document.getElementById('taxa').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            calcularRegra72();
+        }
+    });
+    </script>
+
+        <div class="exemplo-table-container">
+        <h3>Exemplo de Cálculo:</h3>
+        <p>Veja quanto tempo seu investimento levaria para dobrar com diferentes taxas de juros:</p> 
+        <table> 
+            <tr><th>Taxa de Juros</th>
+                <th>Tempo para Dobrar</th></tr> 
+            <tr><td>4%</td><td>18 anos</td></tr> 
+            <tr><td>6%</td><td>12 anos</td></tr> 
+            <tr><td>8%</td><td>9 anos</td></tr> 
+            <tr><td>10%</td><td>7,2 anos</td></tr> 
+            <tr><td>12%</td><td>6 anos</td></tr> 
+        </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button id="btnVoltar">Voltar ao menu</button>
+        </div>
+        <script>
+        document.getElementById('btnVoltar').onclick = function() {
+            window.location.href = 'index.html';
+        };
+        </script>
+    </main>
+
+    <footer class="footer">
+        <p>&copy;  Todos os direitos reservados Isabelly da C. Almeida 2025.</p>
+    </footer>
+</body>
+</html>

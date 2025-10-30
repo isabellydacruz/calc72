@@ -1,0 +1,358 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://img.freepik.com/psd-gratuitas/elemento-monetario-realista_23-2150396392.jpg?semt=ais_incoming&w=740&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-top: 65px; /* Ajustado para o novo tamanho do header */
+    min-height: 100vh;
+    padding-bottom: 65px; /* Ajustado para o novo tamanho do footer */
+}
+
+/* Estilo para o conteúdo principal */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilos específicos para a página de cálculo */
+.calculator-title {
+    text-align: center;
+    color: #677e51;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #677e51;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos para as seções de texto */
+.content-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-left: 3px solid #677e51;
+    background-color: rgba(103, 126, 81, 0.05);
+}
+
+.content-section h3 {
+    color: #677e51;
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+/* Estilo para listas */
+ol, ul {
+    padding-left: 25px;
+}
+
+ol li, ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Destaque para exemplo */
+.example-box {
+    background-color: #f0f2ed;
+    border: 1px solid #677e51;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    display: inline-block;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.85);
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+h4 {
+    color: #000000;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    padding: 30px;
+    background-color: #f0f2ed;
+    border: 2px solid #677e51;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(103, 126, 81, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+form:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(103, 126, 81, 0.2);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #677e51;
+    font-size: 1.1em;
+}
+
+input[type="number"] {
+    padding: 12px 15px;
+    border: 2px solid #677e51;
+    border-radius: 6px;
+    margin: 10px;
+    font-size: 1.1em;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #677e51;
+    box-shadow: 0 0 0 3px rgba(103, 126, 81, 0.2);
+}
+
+input[type="number"]::placeholder {
+    color: #999;
+}
+
+button {
+    padding: 6px 20px;
+    background: #677e51;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+    margin: 8px;
+    height: 32px;
+    line-height: 20px;
+}
+
+button:hover, button:focus {
+    background: #566a44;
+    transform: translateY(-1px);
+}
+
+#resultado {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f2ed;
+    border: 2px solid #677e51;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1.1em;
+    box-shadow: 0 4px 8px rgba(103, 126, 81, 0.15);
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+#resultado:not(:empty) {
+    opacity: 1;
+}
+
+/* Botões lado a lado na página de cálculo */
+.botoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.botoes button {
+    display: inline-block;
+    margin: 0;
+    min-width: 100px;
+}
+
+/* Header style */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #677e51;
+    color: white;
+    height: 45px;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* Estilo para a tabela de exemplo */
+.exemplo-table-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border: 2px solid #677e51;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(103, 126, 81, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.exemplo-table-container::before {
+    content: '📊';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 40px;
+    opacity: 0.1;
+    transform: rotate(15deg);
+}
+
+.exemplo-table-container h3 {
+    color: #677e51;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.exemplo-table-container h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #677e51;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.exemplo-table-container:hover h3::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@keyframes highlightRow {
+    0% { background-color: #ffffff; }
+    50% { background-color: #e8f5e9; }
+    100% { background-color: #ffffff; }
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: center;
+    border: 1px solid #677e51;
+}
+
+th {
+    background-color: #677e51;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+tr {
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+tr:hover {
+    background-color: #e8f5e9;
+    transform: translateX(5px);
+}
+
+tr.highlight {
+    animation: highlightRow 1.5s ease;
+}
+
+/* Estilo para o container do botão na página inicial */
+.button-container {
+    text-align: center;
+    margin: 30px auto 50px auto;
+    max-width: 600px;
+    padding-bottom: 20px;
+}
+
+/* Footer style */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #677e51;
+    color: white;
+    height: 45px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+.footer p {
+    margin: 0;
+    max-width: 800px;
+    padding: 0 20px;
+    width: 100%;
+    text-align: center;
+}
